@@ -56,3 +56,70 @@ updateLanguage('en');
 
 setInterval(updateTbilisiClock, 1000);
 updateTbilisiClock();
+
+gsap.registerPlugin(ScrollTrigger);
+
+const headerTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: "header",
+    start: "top top",       
+    end: "bottom top",      
+    scrub: 1,               
+    pin: false,            
+  }
+});
+
+headerTl.to("header video", {
+  x: "-35vw",
+  opacity: 0.4,
+  ease: "none",
+}, 0);
+
+headerTl.to("header .generalinfos", {
+  x: "35vw",
+  opacity: 0.4,
+  ease: "none",
+}, 0);
+
+headerTl.to("header .lang-buttons", {
+  x: "20vw",
+  opacity: 0,
+  ease: "none",
+}, 0);
+
+gsap.utils.toArray(".breakfast > div").forEach((card, i) => {
+  gsap.fromTo(card,
+    {
+      y: 80,         
+      opacity: 0,
+    },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 0.7,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: card,
+        start: "top 88%",  
+        toggleActions: "play none none reverse",
+      },
+      delay: i * 0.08,      
+    }
+  );
+});
+
+
+gsap.fromTo(".breakfast h1",
+  { y: 40, opacity: 0 },
+  {
+    y: 0,
+    opacity: 1,
+    duration: 0.9,
+    ease: "power4.out",
+    scrollTrigger: {
+      trigger: ".breakfast h1",
+      start: "top 85%",
+      toggleActions: "play none none reverse",
+    }
+  }
+);
