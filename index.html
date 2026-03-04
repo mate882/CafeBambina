@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://kit.fontawesome.com/86be0d69cf.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="images/icon.png">
+    <link rel="stylesheet" href="style.css">
+    <title>Bambina</title>
+</head>
+<body>
+
+    
+    <header>
+        <video src="videos/bambina.MP4" autoplay muted loop playsinline></video>
+
+        <div class="generalinfos">
+            <div class="contact-block">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="contact-text">
+                        <span id="adresstitle"></span>
+                        <div id="adress"></div>
+                        <a
+                        class="get-route"
+                        href="https://www.google.com/maps/dir/?api=1&destination=41.7167,44.7833&travelmode=driving"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div class="contact-text">
+                        <span id="phone"></span>
+                        <div class="phone">(+995)511-33-44-71</div>
+                        <a class="call-btn" href="tel:++995511334471"></a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div class="contact-text">
+                        <span id="hours">Hours</span>  <span id="clock">00:00</span>
+                        
+                        <div class="workinghours">10 am – 11 pm</div>
+                        <div id="status">Checking...</div>
+                    </div>
+                </div>
+
+
+                <a class="contact-item" target="_blank" href="https://www.instagram.com/bambina_tbilisi/" style="text-decoration: none;">
+                    <i class="fa-brands fa-instagram"></i>
+                    <div class="contact-text">
+                        <span>Instagram</span>
+                    </div>
+                </a>
+
+                <a class="contact-item" target="_blank" href="https://wolt.com/ka/geo/tbilisi/restaurant/bambina-cafe?utm_source=googlemapreserved&utm_campaign=bambina-cafe&utm_content=698335b7ae7b768aa2dd7fe7&rwg_token=AFd1xnFfHrqJNBo9-YYV3f44QV9o6rWlJsMTiDCnyxSdHDHsYjofMauQ2ng7Fi9N0aDqgmJa4N91u83XhozA9-uVfurSvoJsCRCFTQomUwipntz38v20T8o%3D" style="text-decoration: none;">
+                    <i class="fa-solid fa-truck"></i>
+                    <div class="contact-text">
+                        <span id="order"></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="lang-buttons">
+            <button onclick="updateLanguage('en')" class="active">EN</button>
+            <button onclick="updateLanguage('ge')">GE</button>
+            <button onclick="updateLanguage('ru')">RU</button>
+        </div>
+
+    </header>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>   
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
