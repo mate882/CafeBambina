@@ -192,7 +192,7 @@ header video{
 
 .lang-buttons{
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
     gap:6px;
 }
 
@@ -228,99 +228,134 @@ header video{
     .lang-buttons button{padding:6px 12px;font-size:0.75rem;}
 }
 
-.breakfast {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-  min-width: 0;
-  font-family: 'DM Sans', sans-serif;
+.menu{
+    display: flex;
+    flex-direction: column;
 }
 
-.breakfast > h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--accent-deep);
-  letter-spacing: 0.02em;
-  padding-bottom: 8px;
-  border-bottom: 2px solid var(--primary);
-  margin-bottom: 4px;
+#breakfast{
+  color: var(--text);
+  font-size: 3em;
+  margin-bottom: 20px;
 }
 
-.breakfast > div {
+#breakfastmenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+}
+
+#breakfastmenu li {
+  width: calc(25% - 12px);
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+.menu-card {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  width: 100%;
-  min-width: 0;
   background: #fff;
   border-radius: 16px;
   border: 1px solid var(--border);
-  padding: 16px 18px;
-  transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
-  cursor: default;
-  position: relative;
   overflow: hidden;
-}
-
-.breakfast > div::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
   height: 100%;
-  background: linear-gradient(180deg, var(--primary), var(--primary-dark));
-  border-radius: 4px 0 0 4px;
+  transition: box-shadow 0.25s, transform 0.25s;
+  cursor: default;
 }
 
-.breakfast > div:hover {
-  box-shadow: 0 6px 24px rgba(124,107,158,0.13);
-  transform: translateY(-2px);
-  background: var(--primary-xl);
+.menu-card:hover {
+  box-shadow: 0 6px 20px rgba(124,107,158,0.15);
+  transform: translateY(-3px);
 }
 
-.breakfast .title {
+.menu-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  background: var(--primary-light);
+  flex-shrink: 0;
+}
+
+.menu-card .title {
   font-family: 'Playfair Display', serif;
-  font-size: 1rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--text);
-  margin: 0;
-  padding-left: 8px;
+  margin: 10px 0 0;
+  padding: 0 12px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.breakfast .descripiton {
-  font-size: 0.82rem;
+.menu-card .description {
+  font-size: 0.75rem;
   color: var(--text-muted);
   font-weight: 400;
   line-height: 1.5;
-  padding-left: 8px;
-  margin: 0;
+  margin: 4px 0 0;
+  padding: 0 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.breakfast .price {
+.menu-card .price {
   display: inline-flex;
   align-items: center;
-  margin-top: 4px;
-  margin-left: 8px;
-  font-size: 0.82rem;
+  margin: 6px 0 12px 12px;
+  padding: 2px 9px;
+  font-size: 0.78rem;
   font-weight: 700;
   color: var(--accent-deep);
   background: var(--primary-light);
-  padding: 2px 10px;
   border-radius: 20px;
   width: fit-content;
   letter-spacing: 0.03em;
 }
 
+@media (max-width: 900px) {
+  #breakfastmenu li {
+    width: calc(50% - 8px);
+  }
+}
+
 @media (max-width: 480px) {
-  .breakfast > h1       { font-size: 1.2rem; }
-  .breakfast > div      { padding: 14px 14px; border-radius: 13px; }
-  .breakfast .title     { font-size: 0.95rem; }
-  .breakfast .descripiton { font-size: 0.8rem; }
-  .breakfast .price     { font-size: 0.78rem; }
+  #breakfastmenu li {
+    width: calc(50% - 6px);
+  }
+
+  #breakfastmenu {
+    gap: 12px;
+  }
+
+  .menu-card .title       { font-size: 0.8rem; }
+  .menu-card .description { font-size: 0.7rem; }
+  .menu-card .price       { font-size: 0.72rem; }
+}
+
+.addtotray{
+    background:transparent;
+    border:none;
+    color:var(--text-muted, #7a6e8a);
+    font-family:'DM Sans',sans-serif;
+    font-size:0.78rem;
+    font-weight:600;
+    letter-spacing:0.1em;
+    padding:7px 14px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:all 0.2s ease;
+}
+
+.addtotray:hover{
+    background:var(--primary-light, #e8e1f3);
+    color:var(--accent-deep, #5a4b7a);
 }

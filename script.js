@@ -30,6 +30,12 @@ document.querySelectorAll('.lang-buttons button').forEach(btn=>{
   });
 });
 
+function addToOrder(itemId) {
+    const item = menuItems.find(i => i.id === itemId);
+    myOrder.push(item);
+    updateUI(); 
+}
+
 function updateLanguage(lang) {
     currentLang = lang; 
 
@@ -40,11 +46,31 @@ function updateLanguage(lang) {
     document.querySelector(".call-btn").innerText = dictionary[lang].callBtn;
     document.getElementById("hours").innerText = dictionary[lang].hours;
     document.getElementById("order").innerText = dictionary[lang].order;
+    document.getElementById("insta").innerText = dictionary[lang].instagram;
+    document.getElementById("breakfast").innerText = dictionary[lang].breakfast;
 
     const statusDiv = document.getElementById("status");
     statusDiv.innerText = isOpen ? dictionary[lang].statusOpen : dictionary[lang].statusClosed;
     
-    gsap.from(".contact-text span, .contact-text div", {
+
+    const breakfastmenu = document.getElementById("breakfastmenu");
+    breakfastmenu.innerHTML = ""; 
+
+    menuItems.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <div class="menu-card">
+                <img src="${item.img}" alt="${item.title[lang]}">
+                <h1 class="title">${item.title[lang]}</h1>
+                <p class="description">${item.description[lang]}</p>
+                <p class="price">${item.price}</p>
+                <button class="addtotray">ADD to Tray</button>
+            </div>
+        `;
+        breakfastmenu.appendChild(li); 
+    });
+
+    gsap.from(".contact-text span, .contact-text div, .menu", {
         opacity: 0,
         y: 5,
         duration: 0.3,
@@ -56,70 +82,3 @@ updateLanguage('en');
 
 setInterval(updateTbilisiClock, 1000);
 updateTbilisiClock();
-
-gsap.registerPlugin(ScrollTrigger);
-
-const headerTl = gsap.timeline({
-  scrollTrigger: {
-    trigger: "header",
-    start: "top top",       
-    end: "bottom top",      
-    scrub: 1,               
-    pin: false,            
-  }
-});
-
-headerTl.to("header video", {
-  x: "-35vw",
-  opacity: 0.4,
-  ease: "none",
-}, 0);
-
-headerTl.to("header .generalinfos", {
-  x: "35vw",
-  opacity: 0.4,
-  ease: "none",
-}, 0);
-
-headerTl.to("header .lang-buttons", {
-  x: "20vw",
-  opacity: 0,
-  ease: "none",
-}, 0);
-
-gsap.utils.toArray(".breakfast > div").forEach((card, i) => {
-  gsap.fromTo(card,
-    {
-      y: 80,         
-      opacity: 0,
-    },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 0.7,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: card,
-        start: "top 88%",  
-        toggleActions: "play none none reverse",
-      },
-      delay: i * 0.08,      
-    }
-  );
-});
-
-
-gsap.fromTo(".breakfast h1",
-  { y: 40, opacity: 0 },
-  {
-    y: 0,
-    opacity: 1,
-    duration: 0.9,
-    ease: "power4.out",
-    scrollTrigger: {
-      trigger: ".breakfast h1",
-      start: "top 85%",
-      toggleActions: "play none none reverse",
-    }
-  }
-);
