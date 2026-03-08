@@ -228,18 +228,14 @@ header video{
     .lang-buttons button{padding:6px 12px;font-size:0.75rem;}
 }
 
-.menu{
-    display: flex;
-    flex-direction: column;
-}
-
-#breakfast{
+#breakfast ,#pasta, #starters, #focaccia, #soups, #coldcoffee, #hotcoffee, #lemonade, #softdrinks{
   color: var(--text);
   font-size: 3em;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
-#breakfastmenu {
+#breakfastmenu, #pastamenu, #startersmenu, #focacciamenu, #soupsmenu, #coldcoffeemenu, #hotcoffeemenu, #lemonademenu, #softdrinksmenu{
   list-style: none;
   margin: 0;
   padding: 0;
@@ -250,7 +246,7 @@ header video{
   width: 100%;
 }
 
-#breakfastmenu li {
+#breakfastmenu li, #pastamenu li, #startersmenu li, #focacciamenu li, #soupsmenu li, #coldcoffeemenu li, #hotcoffeemenu li, #lemonademenu li, #softdrinksmenu li {
   width: calc(25% - 12px);
   min-width: 0;
   flex-shrink: 0;
@@ -295,6 +291,8 @@ header video{
 }
 
 .menu-card .description {
+  flex-grow: 1;
+  margin-bottom: 15px;
   font-size: 0.75rem;
   color: var(--text-muted);
   font-weight: 400;
@@ -302,7 +300,7 @@ header video{
   margin: 4px 0 0;
   padding: 0 12px;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -322,17 +320,17 @@ header video{
 }
 
 @media (max-width: 900px) {
-  #breakfastmenu li {
+  #breakfastmenu li, #pastamenu li, #startersmenu li, #focacciamenu li, #soupsmenu li, #coldcoffeemenu li, #hotcoffeemenu li, #lemonademenu li, #softdrinksmenu li {
     width: calc(50% - 8px);
   }
 }
 
 @media (max-width: 480px) {
-  #breakfastmenu li {
-    width: calc(50% - 6px);
+  #breakfastmenu li, #pastamenu li, #startersmenu li, #focacciamenu li, #soupsmenu li, #coldcoffeemenu li, #hotcoffeemenu li, #lemonademenu li, #softdrinksmenu li {
+    width: calc(50% - 8px);
   }
 
-  #breakfastmenu {
+  #breakfastmenu, #pastamenu, #startersmenu, #focacciamenu, #soupsmenu, #coldcoffeemenu, #hotcoffeemenu, #lemonademenu, #softdrinksmenu {
     gap: 12px;
   }
 
@@ -349,6 +347,8 @@ header video{
     font-size:0.78rem;
     font-weight:600;
     letter-spacing:0.1em;
+    position: relative;
+    margin-bottom: 0;
     padding:7px 14px;
     border-radius:10px;
     cursor:pointer;
