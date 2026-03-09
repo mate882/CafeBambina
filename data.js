@@ -19,7 +19,9 @@ const dictionary = {
         coldcoffee: "Cold Coffee",
         hotcoffee: "Hot Coffee",
         lemonade: "Lemonade",
-        softdrinks: "Soft Drinks"
+        softdrinks: "Soft Drinks",
+        clearTray: "Clear Tray",
+        emptyTray: "Your tray is empty"
     },
     ka: {
         adresstitle: "მისამართი",
@@ -41,7 +43,9 @@ const dictionary = {
         coldcoffee: "ცივი ყავა",
         hotcoffee: "ცხელი ყავა",
         lemonade: "ლიმონათი",
-        softdrinks: "გამაგრილებელი სასმელები"
+        softdrinks: "გამაგრილებელი სასმელები",
+        clearTray: "კალათის გასუფთავება",
+        emptyTray: "თქვენი კალათა ცარიელია"
     },
     ru: {
         adresstitle: "Адрес",
@@ -63,7 +67,9 @@ const dictionary = {
         coldcoffee: "Холодный кофе",
         hotcoffee: "Горячий кофе",
         lemonade: "Лимонад",
-        softdrinks: "Безалкогольные напитки"
+        softdrinks: "Безалкогольные напитки",
+        clearTray: "Очистить корзину",
+        emptyTray: "Ваша корзина пуста"
     }
 };
 
