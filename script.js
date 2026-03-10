@@ -103,7 +103,6 @@ function renderTray() {
     const emptyMsg = document.getElementById("emptytray");
     const clearBtn = document.getElementById("cleartray");
 
-    // 1. Handle Visibility
     if (tray.length === 0) {
         itemsContainer.innerHTML = ""; // Only clear if it's actually empty
         if(emptyMsg) emptyMsg.style.display = 'block';
@@ -129,14 +128,17 @@ function renderTray() {
         let existingLi = itemsContainer.querySelector(`[data-id="${item.id}"]`);
 
         if (existingLi) {
+            // 1. UPDATE TITLE HERE TOO (for when language changes)
+            existingLi.querySelector('h3').textContent = details.title[currentLang]; 
+            
             existingLi.querySelector('.qty-val').textContent = qty;
             existingLi.querySelector('.price-val').textContent = (price * qty) + " ₾";
         } else {
             const li = document.createElement('li');
-            li.setAttribute('data-id', item.id); // Mark it so we can find it later
+            li.setAttribute('data-id', item.id); 
             li.innerHTML = `
                 <div class="tray-item">
-                    <h3>${details.title[currentLang]}</h3>
+                    <h3>${details.title[currentLang]}</h3> 
                     <p class="price-val">${(price * qty)} ₾</p>
                     <button type="button" onclick="RemoveOne('${item.id}')">-</button>
                     <span class="qty-val">${qty}</span>
