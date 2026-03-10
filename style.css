@@ -232,7 +232,7 @@ header video{
 
 #breakfast ,#pasta, #starters, #focaccia, #soups, #coldcoffee, #hotcoffee, #lemonade, #softdrinks{
   color: var(--text);
-  font-size: 3em;
+  font-size: 2em;
   margin-bottom: 20px;
   margin-top: 20px;
 }
@@ -365,6 +365,7 @@ header video{
 .tray {
   width: 100%;
   min-height: 70px;
+  margin-top: 20px;
   padding: 12px 20px;
   background: linear-gradient(180deg, #d6d6d6 0%, #b8b8b8 50%, #909090 100%);
   border-radius: 6px 6px 4px 4px;
