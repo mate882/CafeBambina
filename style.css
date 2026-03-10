@@ -363,15 +363,15 @@ header video{
 }
 
 .tray {
-  width: 100%;
-  margin-top: 20px;
+  width: 95%; 
+  max-width: 1440px;
+  margin-top: 20px auto;
   padding: 12px 20px;
   background: linear-gradient(180deg, #d6d6d6 0%, #b8b8b8 50%, #909090 100%);
   border-radius: 6px 6px 4px 4px;
   box-shadow:
     0 10px 0 #646464,
     0 11px 24px rgba(0,0,0,0.35);
-  transform: perspective(400px) rotateX(6deg);
   transform-origin: top center;
   display: flex;
   align-items: center;
