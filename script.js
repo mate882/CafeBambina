@@ -99,49 +99,67 @@ function animateFly(event) {
 function renderTray() {
     const itemsContainer = document.getElementById("tray"); 
     if (!itemsContainer) return;
-    itemsContainer.innerHTML = ""; 
 
     const emptyMsg = document.getElementById("emptytray");
     const clearBtn = document.getElementById("cleartray");
 
-    // 2. Visibility Logic
+    // 1. Handle Visibility
     if (tray.length === 0) {
+        itemsContainer.innerHTML = ""; // Only clear if it's actually empty
         if(emptyMsg) emptyMsg.style.display = 'block';
         if(clearBtn) clearBtn.style.display = 'none';
-    } else {
-        if(emptyMsg) emptyMsg.style.display = 'none';
-        if(clearBtn) clearBtn.style.display = 'block';
-    }
+        updateTotal(0);
+        return;
+    } 
+
+    if(emptyMsg) emptyMsg.style.display = 'none';
+    if(clearBtn) clearBtn.style.display = 'block';
 
     const allItems = [...BrekafastmenuItems, ...PastamenuItems, ...startersItems, ...focacciaItems, ...soupItems, ...coldCoffeeItems, ...hotCoffeeItems, ...lemonadeItems, ...softDrinkItems]; 
-
     let totalMoney = 0;
 
     tray.forEach(item => {
         const details = allItems.find(i => String(i.id) === String(item.id));
+        if (!details) return;
 
-        if (details) {
-            const name = details.title[currentLang]; 
-            const price = Number(details.price);
-            const qty = Number(item.quantity);
-            totalMoney += (price * qty);
+        const price = Number(details.price);
+        const qty = Number(item.quantity);
+        totalMoney += (price * qty);
 
+        let existingLi = itemsContainer.querySelector(`[data-id="${item.id}"]`);
+
+        if (existingLi) {
+            existingLi.querySelector('.qty-val').textContent = qty;
+            existingLi.querySelector('.price-val').textContent = (price * qty) + " ₾";
+        } else {
             const li = document.createElement('li');
+            li.setAttribute('data-id', item.id); // Mark it so we can find it later
             li.innerHTML = `
                 <div class="tray-item">
-                    <h3>${name}</h3>
-                    <p>${(price * qty)} ₾</p>
-                    <button onclick="RemoveOne('${item.id}')">-</button>
-                    <span>${qty}</span>
-                    <button onclick="animateFly(event); AddToTray('${item.id}')">+</button>
+                    <h3>${details.title[currentLang]}</h3>
+                    <p class="price-val">${(price * qty)} ₾</p>
+                    <button type="button" onclick="RemoveOne('${item.id}')">-</button>
+                    <span class="qty-val">${qty}</span>
+                    <button type="button" onclick="AddToTray('${item.id}')">+</button>
                 </div>
             `;
             itemsContainer.appendChild(li);
-            
-        animation(li);  
         }
     });
 
+    Array.from(itemsContainer.children).forEach(li => {
+        const id = li.getAttribute('data-id');
+        if (!tray.find(t => String(t.id) === String(id))) {
+            li.remove();
+        }
+    });
+
+    updateTotal(totalMoney);
+    
+    ScrollTrigger.refresh();
+}
+
+function updateTotal(totalMoney) {
     const totalDisplay = document.getElementById("totalamount");
     if (totalDisplay) {
         gsap.to(priceTracker, {

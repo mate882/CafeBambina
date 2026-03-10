@@ -381,7 +381,6 @@ header video{
 
 #tray {
   list-style: none;
-  min-height: 300px; 
   overflow-anchor: none;
   margin: 0;
   padding: 0;
