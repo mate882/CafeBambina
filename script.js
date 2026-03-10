@@ -136,7 +136,9 @@ function renderTray() {
                     <button onclick="animateFly(event); AddToTray('${item.id}')">+</button>
                 </div>
             `;
-            itemsContainer.appendChild(li); 
+            itemsContainer.appendChild(li);
+            
+        animation(li);  
         }
     });
 
@@ -216,7 +218,8 @@ function updateLanguage(lang) {
                 <button class="addtotray" onclick="animateFly(event); AddToTray('${item.id}')">${dictionary[lang].addtotray}</button>
             </div>
         `;
-        breakfastmenu.appendChild(li); 
+        breakfastmenu.appendChild(li);
+        animation(li); 
     });
 
     const pastamenu = document.getElementById("pastamenu");
@@ -233,7 +236,9 @@ function updateLanguage(lang) {
                 <button class="addtotray" onclick="animateFly(event); AddToTray('${item.id}')">${dictionary[lang].addtotray}</button>
             </div>
         `;
-        pastamenu.appendChild(li); 
+        pastamenu.appendChild(li);
+        
+        animation(li);  
     });
 
     const startersmenu = document.getElementById("startersmenu");
@@ -250,7 +255,9 @@ function updateLanguage(lang) {
                 <button class="addtotray" onclick="animateFly(event); AddToTray('${item.id}')">${dictionary[lang].addtotray}</button>
             </div>
         `;
-        startersmenu.appendChild(li); 
+        startersmenu.appendChild(li);
+        
+        animation(li);  
     });
 
     const focacciamenu = document.getElementById("focacciamenu");
@@ -267,7 +274,9 @@ function updateLanguage(lang) {
                 <button class="addtotray" onclick="animateFly(event); AddToTray('${item.id}')">${dictionary[lang].addtotray}</button>
             </div>
         `;
-        focacciamenu.appendChild(li); 
+        focacciamenu.appendChild(li);
+        
+        animation(li);  
     });
 
     const soupsmenu = document.getElementById("soupsmenu");
@@ -284,7 +293,9 @@ function updateLanguage(lang) {
                 <button class="addtotray" onclick="animateFly(event); AddToTray('${item.id}')">${dictionary[lang].addtotray}</button>
             </div>
         `;
-        soupsmenu.appendChild(li); 
+        soupsmenu.appendChild(li);
+        
+        animation(li);  
     });
 
     const coldcoffeemenu = document.getElementById("coldcoffeemenu");
@@ -301,7 +312,9 @@ function updateLanguage(lang) {
                 <button class="addtotray" onclick="animateFly(event); AddToTray('${item.id}')">${dictionary[lang].addtotray}</button>
             </div>
         `;
-        coldcoffeemenu.appendChild(li); 
+        coldcoffeemenu.appendChild(li);
+        
+        animation(li);  
     });
 
     const hotcoffeemenu = document.getElementById("hotcoffeemenu");
@@ -318,7 +331,9 @@ function updateLanguage(lang) {
                 <button class="addtotray" onclick="animateFly(event); AddToTray('${item.id}')">${dictionary[lang].addtotray}</button>
             </div>
         `;
-        hotcoffeemenu.appendChild(li); 
+        hotcoffeemenu.appendChild(li);
+        
+        animation(li);  
     });
 
     const lemonademenu = document.getElementById("lemonademenu");
@@ -335,7 +350,9 @@ function updateLanguage(lang) {
                 <button class="addtotray" onclick="animateFly(event); AddToTray('${item.id}')">${dictionary[lang].addtotray}</button>
             </div>
         `;
-        lemonademenu.appendChild(li); 
+        lemonademenu.appendChild(li);
+        
+        animation(li);  
     });
 
     const softdrinksmenu = document.getElementById("softdrinksmenu");
@@ -352,7 +369,9 @@ function updateLanguage(lang) {
                 <button class="addtotray" onclick="animateFly(event); AddToTray('${item.id}')">${dictionary[lang].addtotray}</button>
             </div>
         `;
-        softdrinksmenu.appendChild(li); 
+        softdrinksmenu.appendChild(li);
+        
+        animation(li);  
     });
 
     gsap.from(".contact-text span, .contact-text div, .menu", {
@@ -368,3 +387,37 @@ updateLanguage('en');
 
 setInterval(updateTbilisiClock, 1000);
 updateTbilisiClock();
+
+gsap.registerPlugin(ScrollTrigger);
+
+function enteringanimation(argument){
+    gsap.from(argument, {
+        opacity: 0,
+        y: "100px",
+        duration: 2,     
+        ease: "back.inOut",
+    });
+
+}
+
+function animation(argument){
+    gsap.to(argument, {
+        scrollTrigger: {
+            trigger: argument,      
+            start: "top top",       
+            end: "bottom top",    
+            scrub: 1,               
+        },
+        autoAlpha: 0,
+        scale: 0.8,              
+        ease: "none"                
+    });
+}
+
+animation("header video");
+animation(".generalinfos");
+
+enteringanimation("header video");
+enteringanimation(".generalinfos");
+enteringanimation(".lang-buttons");
+enteringanimation("section div");
