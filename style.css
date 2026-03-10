@@ -342,6 +342,7 @@ header video{
 }
 
 .addtotray{
+    touch-action: manipulation;
     background:transparent;
     border:none;
     color:var(--text-muted, #7a6e8a);
