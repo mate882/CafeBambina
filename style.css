@@ -364,7 +364,6 @@ header video{
 
 .tray {
   width: 100%;
-  min-height: 70px;
   margin-top: 20px;
   padding: 12px 20px;
   background: linear-gradient(180deg, #d6d6d6 0%, #b8b8b8 50%, #909090 100%);
@@ -382,6 +381,8 @@ header video{
 
 #tray {
   list-style: none;
+  min-height: 300px; 
+  overflow-anchor: none;
   margin: 0;
   padding: 0;
   display: flex;
